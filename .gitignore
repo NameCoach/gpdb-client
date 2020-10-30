@@ -1,0 +1,8 @@
+/.bundle/
+
+# rspec failure tracking
+.rspec_status
+.rspec
+
+.vscode/
+.idea/
