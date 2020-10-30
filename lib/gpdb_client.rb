@@ -19,10 +19,11 @@ require 'gpdb/rest/recording_request/model'
 require 'gpdb/rest/recording_request/resource'
 require 'gpdb/rest/recording_request/response'
 
-require 'gpdb/rest/pronunciation/list_response'
 require 'gpdb/rest/pronunciation/model'
 require 'gpdb/rest/pronunciation/resource'
 
 require 'gpdb/rest/target/model'
+require 'gpdb/rest/target/response'
+require 'gpdb/rest/target/list_response'
 
-module GpdbSdkRuby; end
+module GpdbClient; end

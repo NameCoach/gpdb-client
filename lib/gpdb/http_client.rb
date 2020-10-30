@@ -17,7 +17,7 @@ module Gpdb
                                                 end
 
         env[:request_headers]['Accept'] = 'application/json'
-        env[:request_headers]['User-Agent'] = "gpdb-api-client/#{GpdbSdkRuby::VERSION}"
+        env[:request_headers]['User-Agent'] = "gpdb-api-client/#{GpdbClient::VERSION}"
 
         @app.call(env)
       end

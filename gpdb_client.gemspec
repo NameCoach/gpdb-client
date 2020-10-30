@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "gpdb/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "gpdb_sdk_ruby"
-  spec.version       = GpdbSdkRuby::VERSION
+  spec.name          = "gpdb_client"
+  spec.version       = GpdbClient::VERSION
   spec.authors       = ["mariya.kachusova"]
   spec.email         = ["mariya.kachusova@jetruby.com"]
 

@@ -1,7 +1,7 @@
 require 'bundler/setup'
 Bundler.setup
 
-require 'gpdb_sdk_ruby'
+require 'gpdb_client'
 require 'active_support/core_ext/numeric/time'
 
 ENV['GPDB_API_URL'] = 'http://localhost'

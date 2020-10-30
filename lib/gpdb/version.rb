@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module GpdbSdkRuby
+module GpdbClient
   VERSION = '0.2.45'
 end

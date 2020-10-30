@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gpdb_sdk_ruby (0.2.45)
+    gpdb_client (0.2.45)
       activesupport
       faraday
       jwt
@@ -50,7 +50,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1.4)
-  gpdb_sdk_ruby!
+  gpdb_client!
   rake (~> 10.0)
   rspec (~> 3.0)
 
