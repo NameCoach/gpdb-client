@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module GpdbClient
-  VERSION = '0.2.45'
+  VERSION = '0.1'
 end

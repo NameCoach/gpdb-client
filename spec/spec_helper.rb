@@ -3,6 +3,7 @@ Bundler.setup
 
 require 'gpdb_client'
 require 'active_support/core_ext/numeric/time'
+require 'webmock/rspec'
 
 ENV['GPDB_API_URL'] = 'http://localhost'
 ENV['GPDB_NAMESPACE'] = '/test/api/v1'
@@ -11,7 +12,7 @@ ENV['GPDB_SECRET_ACCESS_KEY'] = 'secret_access_key'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!

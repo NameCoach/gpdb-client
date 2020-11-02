@@ -8,6 +8,7 @@ module Gpdb
 
         def initialize(*args)
           super
+
           self.recording_request = Gpdb::REST::RecordingRequest::Model.new(body) if success?
         end
       end

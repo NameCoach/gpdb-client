@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gpdb_client (0.2.45)
+    gpdb_client (0.1)
       activesupport
       faraday
       jwt
@@ -15,16 +15,21 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     concurrent-ruby (1.1.7)
+    crack (0.4.4)
     diff-lcs (1.4.4)
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
+    hashdiff (1.0.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jwt (2.2.2)
     minitest (5.14.2)
     multipart-post (2.1.1)
+    public_suffix (4.0.6)
     rake (10.5.0)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -43,6 +48,10 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    webmock (3.9.3)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     zeitwerk (2.4.1)
 
 PLATFORMS
@@ -53,6 +62,7 @@ DEPENDENCIES
   gpdb_client!
   rake (~> 10.0)
   rspec (~> 3.0)
+  webmock (~> 3.9.2)
 
 BUNDLED WITH
    2.1.4

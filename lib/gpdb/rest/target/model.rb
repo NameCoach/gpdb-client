@@ -13,7 +13,7 @@ module Gpdb
           self.links           = attributes[:links]
           self.transcription   = attributes[:target_transcription]
           self.id              = attributes[:target_id]
-          self.pronunciations  = attributes[:pronunciations].map do |pronunciation|
+          self.pronunciations  = attributes[:pronunciations]&.map do |pronunciation|
             ::Gpdb::REST::Pronunciation::Model.new(pronunciation)
           end
         end

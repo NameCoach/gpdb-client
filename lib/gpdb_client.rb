@@ -14,7 +14,6 @@ require 'gpdb/rest/client'
 require 'gpdb/rest/request'
 require 'gpdb/rest/response'
 
-require 'gpdb/rest/recording_request/list_response'
 require 'gpdb/rest/recording_request/model'
 require 'gpdb/rest/recording_request/resource'
 require 'gpdb/rest/recording_request/response'
