@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Gpdb::REST::Target::Model do
+RSpec.describe ::Gpdb::REST::Pronunciation::Target do
   describe '#attributes' do
     let(:instance) { described_class.new }
 

@@ -2,8 +2,8 @@
 
 module Gpdb
   module REST
-    module Target
-      class Model < ::Gpdb::Model
+    module Pronunciation
+      class Target < ::Gpdb::Model
         attr_accessor :pagination_info, :origin, :links,
                       :transcription, :id, :pronunciations
 

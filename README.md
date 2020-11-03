@@ -5,6 +5,16 @@ It is useful to external developers who wish to add NameCoach services to an app
 
 For more information on NameCoach GPDB APi, you can visit [documentation page](https://namecoachgpdb.docs.apiary.io/#).
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+  - [Pronunciations](#pronunciations)
+    - [Simple search](#simple-search)
+    - [Complex search](#complex-search)
+    - [Create](#create-a-pronunciation)
+  - [Recording requests](#recording-request)
+    - [Create](#create-recording-request)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -25,7 +35,7 @@ Or install it yourself as:
 
 `GPDB_API_URL`
 
-`GPDB_NAMESPACE` - specifies the API version (e.g. `'/api/v1'`)
+`GPDB_NAMESPACE` - specifies the API version (e.g. `'/api/public/v1'`)
 
 `GPDB_ACCESS_KEY_ID`, `GPDB_SECRET_ACCESS_KEY` - 
 During your API onboarding with NameCoach, you will be given these values
@@ -41,14 +51,19 @@ You need to create a client instance to perform requests. Basic example:
     # Each response has common methods:
     result.success? # => true
     result.status   # => 200
-    result.body     # => full body hash returned by GPDB
+    
+    # As well as specific response attributes
+    result.target   # => Gpdb::REST::Pronunciation::Target instance
+
 
 The client instance contains two resources: `pronunciations` and `recording_requests`.
-Each resource has its own uniq methods which are described below. 
+Each resource has its own unique methods which are described below. 
 
 You can find detailed information about all possible parameters and the response format
 on the [documentation page](https://namecoachgpdb.docs.apiary.io/#).
 Links to the specific methods are placed at the end of each paragraph.
+
+## API
 
 ### Pronunciations
 
@@ -63,10 +78,10 @@ Quick / simple request to get pronunciation for a single target.
     )
     
     result.meta
-    # => Name Parser and Recommendation Model vesrion info
+    # => Name Parser and Recommendation Model version info
     
     result.target
-    # => Gpdb::REST::Target::Model instance that contains target attributes
+    # => Gpdb::REST::Pronunciation::Target instance that contains target attributes
     
     pronunciations = result.target.pronunciations
     # => an array of Gpdb::REST::Pronunciation::Model instances
@@ -98,10 +113,10 @@ Perform a search in GPDB given between 1 and 10 search targets.
     )
     
     result.target_results
-    # => an array of Gpdb::REST::Target::Model instances
+    # => an array of Gpdb::REST::Pronunciation::Target instances
     
     result.meta
-    # => Name Parser and Recommendation Model vesrion info
+    # => Name Parser and Recommendation Model version info
     
 [Complex search documentation](https://namecoachgpdb.docs.apiary.io/#reference/pronunciations/complex-search/complex-search)
 
@@ -125,8 +140,8 @@ In order to create recordings, you will need to provide audio data in the base64
         }
     )
     
-    result.body
-    # => your pronunciation attributes
+    result.pronunciation
+    # => Gpdb::REST::Pronunciation::Model instance
     
     result.errors # will contain errors if attrobutes you provided are not valid
     # => { audio_data: "can't be blank" }
@@ -154,10 +169,10 @@ If we are missing a pronunciation needed for you, you can request it
         }
     )
     
-    result.body
-    # recording request attributes
+    result.recording_request
+    # Gpdb::REST::RecordingRequest::Model instance
     
-    result.errors # will contain errors if attrobutes you provided are not valid
+    result.errors # will contain errors if attributes you provided are not valid
     # => { target: "can't be blank" }
 
 [Recording request documentation](https://namecoachgpdb.docs.apiary.io/#reference/recording-requests/recording-requests/recording-requests)

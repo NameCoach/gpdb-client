@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Gpdb::REST::Target::Response do
+RSpec.describe ::Gpdb::REST::Pronunciation::TargetResponse do
   describe '#initialize' do
     subject { described_class.new(response) }
 
@@ -21,7 +21,7 @@ RSpec.describe ::Gpdb::REST::Target::Response do
         expect(subject.status).to eq response[:status]
         expect(subject.body).to eq response[:body]
 
-        expect(subject.target).to be_a Gpdb::REST::Target::Model
+        expect(subject.target).to be_a Gpdb::REST::Pronunciation::Target
         expect(subject.meta).to eq meta
       end
     end

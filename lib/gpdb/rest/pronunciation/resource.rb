@@ -8,7 +8,7 @@ module Gpdb
         # @param [String] app_sig
         # @param [String] app_type
         # @param [Hash] options
-        # @return [Gpdb::REST::Target::Response]
+        # @return [Gpdb::REST::Pronunciation::TargetResponse]
         def simple_search(target:, app_sig:, app_type:, **options)
           request = ::Gpdb::REST::Request.new(
             method: :get,
@@ -20,7 +20,7 @@ module Gpdb
             }.merge(options)
           )
 
-          ::Gpdb::REST::Target::Response.new(
+          ::Gpdb::REST::Pronunciation::TargetResponse.new(
             client.request(request, namespace: 'api/public/v1')
           )
         end
@@ -28,7 +28,7 @@ module Gpdb
         # @param [Array] targets
         # @param [Object] application_context
         # @param [Object] user_context
-        # @return [Gpdb::REST::Target::ListResponse]
+        # @return [Gpdb::REST::Pronunciation::TargetListResponse]
         def complex_search(targets:, application_context:, user_context: {})
           request = ::Gpdb::REST::Request.new(
             method: :post,
@@ -40,7 +40,7 @@ module Gpdb
             }
           )
 
-          ::Gpdb::REST::Target::ListResponse.new(
+          ::Gpdb::REST::Pronunciation::TargetListResponse.new(
             client.request(request, namespace: 'api/public/v1')
           )
         end
@@ -50,7 +50,7 @@ module Gpdb
         # @param [Object] application_context
         # @param [Object] user_context
         # @param [Hash] options
-        # @return [Gpdb::REST::Response]
+        # @return [Gpdb::REST::Pronunciation::Response]
         def create(name:, base64_audio:, application_context:, user_context:, **options)
           request = ::Gpdb::REST::Request.new(
             method: :post,
@@ -63,7 +63,7 @@ module Gpdb
             }.merge(options)
           )
 
-          ::Gpdb::REST::Response.new(
+          ::Gpdb::REST::Pronunciation::Response.new(
             client.request(request, namespace: 'api/public/v1')
           )
         end

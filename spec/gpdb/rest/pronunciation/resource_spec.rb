@@ -45,7 +45,7 @@ RSpec.describe ::Gpdb::REST::Pronunciation::Resource do
         expect(subject.body).to be_present
 
         expect(subject.meta).to eq gpdb_meta
-        expect(subject.target).to be_a Gpdb::REST::Target::Model
+        expect(subject.target).to be_a Gpdb::REST::Pronunciation::Target
 
         expect(subject.target.origin).to eq target
       end
@@ -112,7 +112,7 @@ RSpec.describe ::Gpdb::REST::Pronunciation::Resource do
 
         expect(subject.meta).to eq gpdb_meta
         expect(subject.target_results).to be_an Array
-        expect(subject.target_results).to all(be_a Gpdb::REST::Target::Model)
+        expect(subject.target_results).to all(be_a Gpdb::REST::Pronunciation::Target)
 
         expect(subject.target_results.length).to eq gpdb_response[:target_results].length
       end
@@ -154,10 +154,10 @@ RSpec.describe ::Gpdb::REST::Pronunciation::Resource do
       let(:gpdb_response) { { id: 1, audio_url: 'an_audio_url' } }
 
       it 'performs a request and returns a wrapped response' do
-        expect(subject).to be_a Gpdb::REST::Response
-
         expect(subject.status).to eq 200
         expect(subject.body).to eq gpdb_response
+
+        expect(subject.pronunciation.id).to eq gpdb_response[:id]
       end
 
       context 'when options are provided' do

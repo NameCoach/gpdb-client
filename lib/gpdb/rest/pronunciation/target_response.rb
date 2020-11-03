@@ -2,8 +2,8 @@
 
 module Gpdb
   module REST
-    module Target
-      class Response < ::Gpdb::REST::Response
+    module Pronunciation
+      class TargetResponse < ::Gpdb::REST::Response
         attr_accessor :target, :meta
 
         def initialize(*args)
@@ -11,7 +11,7 @@ module Gpdb
 
           return unless success?
 
-          self.target = ::Gpdb::REST::Target::Model.new(body[:target_result])
+          self.target = ::Gpdb::REST::Pronunciation::Target.new(body[:target_result])
           self.meta = body[:meta]
         end
       end

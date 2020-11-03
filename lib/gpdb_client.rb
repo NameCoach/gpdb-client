@@ -20,9 +20,9 @@ require 'gpdb/rest/recording_request/response'
 
 require 'gpdb/rest/pronunciation/model'
 require 'gpdb/rest/pronunciation/resource'
-
-require 'gpdb/rest/target/model'
-require 'gpdb/rest/target/response'
-require 'gpdb/rest/target/list_response'
+require 'gpdb/rest/pronunciation/response'
+require 'gpdb/rest/pronunciation/target'
+require 'gpdb/rest/pronunciation/target_response'
+require 'gpdb/rest/pronunciation/target_list_response'
 
 module GpdbClient; end
