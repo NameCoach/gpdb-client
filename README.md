@@ -1,9 +1,9 @@
 # Gpdb Client
 
-The gem is a simple wrapper around NameCoach GPDB (General Pronunciation Database) API.
-It is useful to external developers who wish to add NameCoach services to an application. 
+The gem is a simple wrapper around NameCoach GPDB (General Pronunciation Database) Web API.
+You can use this to quickly and easily add NameCoach services to an application's back end services. 
 
-For more information on NameCoach GPDB APi, you can visit [documentation page](https://namecoachgpdb.docs.apiary.io/#).
+For more information on NameCoach GPDB APi, you can visit [the documentation page](https://namecoachgpdb.docs.apiary.io/#).
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -42,7 +42,7 @@ During your API onboarding with NameCoach, you will be given these values
 
 ## Usage
 
-You need to create a client instance to perform requests. Basic example:
+You need to create a client instance to perform requests. Here's a basic example:
 
     gpdb_client = Gpdb::REST::Client.new
     
@@ -57,9 +57,9 @@ You need to create a client instance to perform requests. Basic example:
 
 
 The client instance contains two resources: `pronunciations` and `recording_requests`.
-Each resource has its own unique methods which are described below. 
+Each resource has its own methods which are described below. 
 
-You can find detailed information about all possible parameters and the response format
+You can find detailed information about all the possible parameters and the response format
 on the [documentation page](https://namecoachgpdb.docs.apiary.io/#).
 Links to the specific methods are placed at the end of each paragraph.
 
@@ -78,7 +78,7 @@ Quick / simple request to get pronunciation for a single target.
     )
     
     result.meta
-    # => Name Parser and Recommendation Model version info
+    # => Version info for various internal services, mostly useful should you require help from NameCoach's support engineers.
     
     result.target
     # => Gpdb::REST::Pronunciation::Target instance that contains target attributes
@@ -93,7 +93,7 @@ Quick / simple request to get pronunciation for a single target.
 
 #### Complex search
 
-Perform a search in GPDB given between 1 and 10 search targets.
+Perform a GPDB search in for multiple targets.  Currently you can specify up to 10 targets in a single request.
 
     result = gpdb_client.pronunciations.complex_search(
         targets: [
@@ -104,6 +104,10 @@ Perform a search in GPDB given between 1 and 10 search targets.
             {
               target: "rob",
               target_type_sig:  "person_first_name"
+            },
+            {
+              target: "green",
+              target_type_sig:  "person_last_name"
             }
         ],
         application_context: {
@@ -122,7 +126,7 @@ Perform a search in GPDB given between 1 and 10 search targets.
 
 #### Create a pronunciation
 
-In order to create recordings, you will need to provide audio data in the base64 format.
+In order to create recordings, audio data must be encoded as base64.
 
     result = gpdb_client.pronunciations.create(
         name: 'mary',
@@ -152,7 +156,7 @@ In order to create recordings, you will need to provide audio data in the base64
 
 #### Create recording request
 
-If we are missing a pronunciation needed for you, you can request it
+If NameCoach is missing a pronunciation that you need, you can request it:
 
     result = gpdb_client.recording_requests.create(
         target: 'franka',
